@@ -5,11 +5,12 @@ Author: Zerui Han <hanzr.nju@gmail.com>
 Date: 2023-01-17 09:46:05
 Description: Click mouse using keyboard
 FilePath: /keyboard-click/keymouse.py
-LastEditTime: 2023-01-17 14:46:39
+LastEditTime: 2023-01-17 15:13:54
 '''
 
 import keyboard
 import mouse
+import time
 
 
 class Click:
@@ -25,8 +26,10 @@ class Click:
         print('Middle: ', hotkey_mid)
 
         while True:
-            keyboard.wait(hotkey, suppress=True)
+            keyboard.wait(hotkey, suppress=True)  # only can suppress esc
             self.toggle()
+            time.sleep(0.3)
+            keyboard.press_and_release('capslock')  # reset capslock
 
     def toggle(self):
         self.status = not self.status
