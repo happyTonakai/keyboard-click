@@ -5,7 +5,7 @@ Author: Zerui Han <hanzr.nju@gmail.com>
 Date: 2023-01-17 09:46:05
 Description: Click mouse using keyboard
 FilePath: /keyboard-click/keymouse.py
-LastEditTime: 2023-01-17 15:13:54
+LastEditTime: 2023-01-19 14:17:57
 '''
 
 import keyboard
@@ -14,7 +14,7 @@ import time
 
 
 class Click:
-    def __init__(self, hotkey='capslock+esc', hotkey_left='d',
+    def __init__(self, hotkey='capslock+space', hotkey_left='d',
                  hotkey_right='f', hotkey_mid='g'):
         self.status = False
         self.hotkey_left = hotkey_left
