@@ -5,7 +5,7 @@ Author: Zerui Han <hanzr.nju@gmail.com>
 Date: 2023-01-17 09:46:05
 Description: Click mouse using keyboard
 FilePath: /keyboard-click/keymouse.py
-LastEditTime: 2023-02-03 14:42:41
+LastEditTime: 2023-02-03 15:27:43
 '''
 
 import os
@@ -44,7 +44,7 @@ class Click:
             keyboard.add_hotkey(self.hotkey, self.toggle, suppress=True)
 
         self.update_icon()
-        if 'calslock' in self.hotkey:
+        if 'capslock' in self.hotkey:
             time.sleep(0.3)
             keyboard.press_and_release('capslock')  # reset capslock
 
@@ -74,5 +74,5 @@ class Click:
 
 if __name__ == '__main__':
     os.chdir(sys._MEIPASS)  # https://stackoverflow.com/questions/51060894/adding-a-data-file-in-pyinstaller-using-the-onefile-option
-    click = Click(hotkey='capslock+space', hotkey_left='d',
+    click = Click(hotkey='shift+space', hotkey_left='d',
                   hotkey_right='f', hotkey_mid='g')
