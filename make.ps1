@@ -3,3 +3,4 @@ If (Test-Path ~/keymouse.exe) {
 	Remove-Item ~/keymouse.exe
 }
 Copy-Item dist/keymouse.exe ~/keymouse.exe
+Start-Process ~/keymouse.exe
