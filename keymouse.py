@@ -5,7 +5,7 @@ Author: Zerui Han <hanzr.nju@gmail.com>
 Date: 2023-01-17 09:46:05
 Description: Control mouse using keyboard
 FilePath: /keyboard-click/keymouse.py
-LastEditTime: 2023-02-15 12:56:27
+LastEditTime: 2024-08-15 13:03:45
 """
 import os
 import sys
@@ -41,6 +41,10 @@ class IconWorker:
         self.icon.stop()
 
 
+def press_right():
+    keyboard.press_and_release("right")
+
+
 class Click:
     def __init__(
         self,
@@ -61,6 +65,7 @@ class Click:
     def toggle(self, _):
         self.status = not self.status
         keyboard.unhook_all()
+        keyboard.add_hotkey("alt+space", press_right, suppress=True)
         self.set_hotkey()
         if self.status:
             keyboard.on_press_key(self.hotkey_left, self.left_click, suppress=True)
@@ -102,7 +107,10 @@ class Click:
 
 
 if __name__ == "__main__":
-    os.chdir(
-        sys._MEIPASS
-    )  # https://stackoverflow.com/questions/51060894/adding-a-data-file-in-pyinstaller-using-the-onefile-option
+    # https://stackoverflow.com/questions/51060894/adding-a-data-file-in-pyinstaller-using-the-onefile-option
+    try:
+        os.chdir(sys._MEIPASS)
+    except Exception:
+        os.chdir(os.path.dirname(__file__))
+
     worker = IconWorker(hotkey="F4", left="F1", right="F2", mid="F3")
